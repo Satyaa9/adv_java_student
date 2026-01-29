@@ -25,6 +25,7 @@ public class StudentController {
 	private StudentService studentService;
 	
 	
+	//API to get the student name
 	@GetMapping("/studentname")
 		public String getStudentName() {
 			return studentService.getStudentName();
@@ -32,27 +33,33 @@ public class StudentController {
 	
 	
 	
+	//API to get all students from the database
 	@GetMapping("/allstudents")
 	public List<Student> allStudents(){
 		return studentService.getAllStudent();
 	}
 	
+	
+	//API to add student in the database
 	@PostMapping("/addstudent")
 	public Student addStudent(@RequestBody Student student) {
 		return studentService.addStudent(student);
 	}
 	
+	//API to get the student by age from the database
 	@GetMapping("/studentByAge/{age}")
 	public List<Student> getStudentByAge(@PathVariable int age){
 		return studentService.getStudentByAge(age);
 	}
 	
+	//API to get the student by name
 	@GetMapping("/studentByName/{name}")
 		public List<Student> getStudentByName(@PathVariable String name){
 			return studentService.getStudentByName(name);
 		
 	}
 	
+	//API to delete the student by using the id
 	@DeleteMapping("/delete/{id}")
 	public String deleteStudent(@PathVariable int id) {
 		studentService.deleteStudent(id);
@@ -60,6 +67,7 @@ public class StudentController {
 		
 	}
 	
+	//API to update the student by using the id of student
 	@PutMapping("/update/{id}")
 	public Student updateStudent(@PathVariable int id , @RequestBody Student student) {
 		return studentService.updateStudent(id, student);
